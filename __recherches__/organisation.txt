@@ -1,0 +1,11 @@
+# TwitterPredictor :
+
+# Functional architecture :
+
+# Different kind of objects that we will name "subjects". They can be either :
+- humans (different attributes will distinguish among them politicians, entrepreneurs, citizens, etc ...) ;
+- organizations (political parties, companies, organizations) which are an organized and hierarchical architecture of humans, each of them having a title (a role)) ;
+
+# A first module will allow the user to create an entity
+# A second module will allow the user to create an alert on an entity with some parameters (the program will scan periodically twitter in search of tweets / posts mentioning the entity)
+# A third module will create specific functions that will allow the user to query twitter, the queries will contain entities, etc ...
