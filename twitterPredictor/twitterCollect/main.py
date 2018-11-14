@@ -1,9 +1,13 @@
 import tweepy
+import json
 
 from credentials import *
 from tweepy.streaming import StreamListener
 
 count = 100
+numberCandidates = 3
+
+
 
 def twitter_setup():
     # Cette fonction permet d'établir un lien avec l'API Tweeter. Elle renvoie un objet de type API si la connexion est un succès, None sinon 
@@ -74,21 +78,23 @@ def get_candidate_queries(num_candidate=1, file_path="../../inputData/"):
     hashtags = hashtagsFile.readlines()
 
     for k in keywords : # On nettoie les données au préalable
-	k.trim()
-	k.toLowerCase()
+        k.strip()
+        k.lower()
 
     for h in hashtags:
-	h.trim()
-	h.toLowerCase()
+        h.strip()
+        h.lower()
 
     keywordsFile.close()
     hashtagsFile.close()   
     
     try: # on concatène les deux listes de requêtes
         queries = keywords + hashtags
-	return queries
+        return queries
     except IOError:
        return []
+
+
 
 def get_tweets_from_candidates_search_queries(queries, twitter_api):
     # Fonction permettant de concaténer les tweets renvoyés pour chaque requête sur l'API twitter fournie en argument 
@@ -99,10 +105,38 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
 	
         return result
 
+
+
 def get_replies_to_candidate(num_candidate, idTweet):
     # Fonction retournant pour l'id du tweet passé en paramètre l'ensemlbe de ses réponses
-
+    return None
     
     
 def get_retweets_of_candidate(num_candidate, idTweet):
     # Fonction retournant pour l'id du tweet passé en paramètre l'ensemble de ses retweets
+    return None
+
+
+def execute():
+    result = []
+    for c in range(1, numberCandidates + 1):
+        queries = get_candidate_queries(c)
+        data = {}
+        tweets = get_tweets_from_candidates_search_queries(queries, twitter_setup())
+        for i in range(len(tweets)):
+            raw = tweets[i]._json
+            data["id"] = raw["id"]
+            data["text"] = raw["text"]
+            data["author"] = raw["user"]
+            data["language"] = raw["lang"]
+            data["date"] = raw["created_at"]
+            data["favs"] = raw["favorite_count"]
+            data["RTS"] = raw["retweet_count"]
+            #data["reps"] = raw["reply_count"]
+            #data["qts"] = raw["quote_count"]
+            data["hashtags"] = raw["entities"]["hashtags"]
+            #data["country"] = raw["place"]["country"]
+        result.append([c, tweets])
+    return result
+
+execute()
