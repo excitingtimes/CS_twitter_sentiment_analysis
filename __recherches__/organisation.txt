@@ -2,10 +2,15 @@
 
 # Functional architecture :
 
-# Different kind of objects that we will name "subjects". They can be either :
-- humans (different attributes will distinguish among them politicians, entrepreneurs, citizens, etc ...) ;
+# Different kinds of objects that we will name "subjects". They can be either :
+- humans (different attributes will distinguish among them politicians, entrepreneurs, simple citizens, influencers, etc ...) ;
 - organizations (political parties, companies, organizations) which are an organized and hierarchical architecture of humans, each of them having a title (a role)) ;
+- notions or topics : these are represented by a list of keywords / regular expressions that will be looked for over Twitter ;
 
 # A first module will allow the user to create an entity
-# A second module will allow the user to create an alert on an entity with some parameters (the program will scan periodically twitter in search of tweets / posts mentioning the entity)
-# A third module will create specific functions that will allow the user to query twitter, the queries will contain entities, etc ...
+# A second module will allow the user to create an alert on an entity or a topic with some parameters (the program will scan periodically twitter in search of tweets / posts mentioning the entity)
+# A third module will create general functions (object-oriented programming) that will allow the user to query twitter, giving humans, organizations or topics as parameters, etc ...
+
+# A fourth module will be fed by data given by the first or the third module and will store them in two separate database
+# A fifth module will provide the user with some analytics concerning the query
+# A sixth module will provide the user with a graph to get the insights of the situation
