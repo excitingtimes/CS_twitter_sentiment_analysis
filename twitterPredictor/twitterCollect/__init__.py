@@ -1,7 +1,7 @@
 import tweepy
 
 # We import our access keys:
-from tweet_collection.credentials import *   
+from credentials import *   
 
 def twitterSetup():
     """
