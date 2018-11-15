@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #étape 1
 
 import json
@@ -30,3 +31,6 @@ def json_to_dataframe(dico_json):
 	return(array)					#affichage du tableau
 
 
+=======
+def execute():
+>>>>>>> 16ff165d25629c76cf78e19ca385bdeca8dce6ce
