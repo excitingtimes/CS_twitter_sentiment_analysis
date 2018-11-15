@@ -1,3 +1,5 @@
+numberCandidates = 3
+
 def avg_RT(tweets_candidat):
     """compte le nombre moyen de reweets par candidat"""
     nombre_tweets=len(tweets_candidat)
@@ -108,3 +110,23 @@ def avg_hastag(tweets_candidat):
         len_a=len_hashtag(a)
         nombre_hashtag+=len_a
     return(nombre_hashtag/nombre_tweets)
+
+def execute(tweets):
+    candidats = [] # On renvoie la liste des listes de tweets associés à chaque candidat
+    avg_hashtag, max_hashtag, min_hashtag, min_len_tweets, max_len_tweets, avg_len_tweets, min_fav, max_fav, avg_fav, min_RT, max_RT, avg_RT = [], [], [], [], [], [], [], [], [], [], [], []
+
+    for c in range(1, numberCandidates + 1): # On calcule l'ensemble des valeurs associées à l'ensemble des tweets liés à chque candidat
+        candidats.append([t for t in tweets if t["candidat"] == c])
+        avg_hashtag.append(avg_hashtag(candidats[-1]))
+        max_hashtag.append(max_hashtag(candidats[-1]))
+        min_hashtag.append(min_hashtag(candidats[-1]))
+        max_len_tweets.append(max_len_tweets(candidats[-1]))
+        avg_len_tweets.append(avg_len_tweets(candidats[-1]))
+        min_fav.append(min_fav(candidats[-1]))
+        max_fav.append(max_fav(candidats[-1]))
+        avg_fav.append(avg_fav(candidats[-1]))
+        min_RT.append(min_RT(candidats[-1]))
+        max_RT.append(max_RT(candidats[-1]))
+        avg_RT.append(avg_RT(candidats[-1]))
+
+    return {"avg_hashtag" : avg_hashtag, "max_hashtag" : max_hashtag, "min_hashtag" : min_hashtag, "min_len_tweets" : min_len_tweets, "max_len_tweets" : max_len_tweets,"avg_len_tweets" : avg_len_tweets, "min_fav" : min_fav, "max_fav" : max_fav, "avg_fav" : avg_fav, "min_RT" : min_RT, "max_RT" : max_RT, "avg_RT" : avg_RT} 
