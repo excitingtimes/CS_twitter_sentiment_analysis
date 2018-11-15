@@ -126,6 +126,7 @@ def execute():
         for i in range(len(tweets)):
             raw = tweets[i]._json
             data["id"] = raw["id"]
+            data["candidat"] = c
             data["text"] = raw["text"]
             data["author"] = raw["user"]
             data["language"] = raw["lang"]
