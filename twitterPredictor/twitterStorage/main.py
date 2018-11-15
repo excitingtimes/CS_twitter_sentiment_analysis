@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-#étape 1
-
 import json
 import pandas as pd
+
+
+numberCandidates = 3
 
 
 def store_tweets(tweets,filename):
@@ -18,11 +18,10 @@ def unstore_tweets(filename):
 	return tweets
 
 
-#étape2
-
 
 def tableau_donnees(tweet_status):
 	tweet_json=json.dump(tweet_status[0])		#transformation d'un status en json
+
 
 
 def json_to_dataframe(dico_json):
@@ -31,6 +30,7 @@ def json_to_dataframe(dico_json):
 	return(array)					#affichage du tableau
 
 
-=======
-def execute():
->>>>>>> 16ff165d25629c76cf78e19ca385bdeca8dce6ce
+
+def execute(tweets):
+	for c in range(1, numberCandidates + 1):
+		store_tweets(tweets[c - 1], "tweets" + str(c) + ".txt")

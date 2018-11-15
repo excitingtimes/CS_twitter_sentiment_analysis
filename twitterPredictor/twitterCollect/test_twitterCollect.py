@@ -10,3 +10,6 @@ def test2(): # Vérifie si le système renvoie effectivement des données sur un
 
 def test3(): # Vérifie si le système renvoie effectivement des données sur un utilisateur particulier
 	assert(tcs.collect_by_user("EmmanuelMacron", 240) is not None)
+
+def test4(): # Vérifie si la requête sur les data rentrées par le client renvoie bien un ensemble de tweets
+	assert(tcs.execute() != [])
