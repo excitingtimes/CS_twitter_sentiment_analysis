@@ -1,11 +1,11 @@
 import tweepy
 import json
 
-from credentials import *
 from tweepy.streaming import StreamListener
 
-count = 100
+count = 1
 numberCandidates = 3
+
 
 
 
@@ -65,7 +65,7 @@ def collect_by_streaming(terms_to_track):
 
 
 
-def get_candidate_queries(num_candidate=1, file_path="../../inputData/"):
+def get_candidate_queries(num_candidate=1, file_path="twitterCollect/inputData/"):
     # Fonction permettant d'obtenir une liste de requêtes à partir de mots-clés et de hashtags concernant un candidat politique
 
     keywordsPath = file_path + "keywords" + str(num_candidate) + ".txt"
@@ -77,13 +77,11 @@ def get_candidate_queries(num_candidate=1, file_path="../../inputData/"):
     keywords = keywordsFile.readlines() # On obtient une liste de mots - clés (et des hashtags)
     hashtags = hashtagsFile.readlines()
 
-    for k in keywords : # On nettoie les données au préalable
-        k.strip()
-        k.lower()
-
-    for h in hashtags:
-        h.strip()
-        h.lower()
+    keywords = [k.strip().lower() for k in keywords]
+    hashtags = [h.strip().lower() for h in hashtags]
+    
+    keywords = [k for k in keywords if k != ""]
+    hashtags = [h for h in hashtags if h != ""]
 
     keywordsFile.close()
     hashtagsFile.close()   
@@ -99,11 +97,10 @@ def get_candidate_queries(num_candidate=1, file_path="../../inputData/"):
 def get_tweets_from_candidates_search_queries(queries, twitter_api):
     # Fonction permettant de concaténer les tweets renvoyés pour chaque requête sur l'API twitter fournie en argument 
     result = []
-	
     for query in queries : # Pour chaque requête, on ajoute au résultat final le résultat de l'appel à l'API
         result += twitter_api.search(q = query, rpp = count)
-	
-        return result
+
+    return result
 
 
 
@@ -117,14 +114,16 @@ def get_retweets_of_candidate(num_candidate, idTweet):
     return None
 
 
-def execute():
+def tc_execute():
     result = []
     for c in range(1, numberCandidates + 1):
         queries = get_candidate_queries(c)
-        data = {}
         tweets = get_tweets_from_candidates_search_queries(queries, twitter_setup())
+        
         for i in range(len(tweets)):
+            data = {}
             raw = tweets[i]._json
+
             data["id"] = raw["id"]
             data["candidat"] = c
             data["text"] = raw["text"]
@@ -137,7 +136,5 @@ def execute():
             #data["qts"] = raw["quote_count"]
             data["hashtags"] = raw["entities"]["hashtags"]
             #data["country"] = raw["place"]["country"]
-        result.append([c, tweets])
+            result.append(data)
     return result
-
-execute()
