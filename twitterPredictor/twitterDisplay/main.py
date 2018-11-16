@@ -19,11 +19,11 @@ app.layout = html.Div(children=[
     '''),
 
 
-#liste avg_RTS est une liste contennant les retweets moyen pour chaque candidat
-#liste avg_FAVS est une liste contennant les favoris moyen pour chaque candidat
-#avg_hashtags est une liste contennat le nombre moyen de hashtags pour chaque candidat
-#len_tweet est une liste contennant la longueur moyenne des tweets par candidat
-#tweet_sentimental est une liste de liste contennant les sentiments pour chaque candidat ( 0 neg, 1 neutre, 2 positif)
+#liste avg_RTS est une liste contennant les retweets moyen pour chaque candidat.
+#liste avg_FAVS est une liste contennant les favoris moyen pour chaque candidat.
+#avg_hashtags est une liste contennat le nombre moyen de hashtags pour chaque candidat.
+#len_tweet est une liste contennant la longueur moyenne des tweets par candidat.
+#tweet_sentimental est une liste de liste contennant les sentiments pour chaque candidat ( 0 neg, 1 neutre, 2 positif).
 #http://127.0.0.1:8050
     dcc.Graph(
         id='example-graphRTS',
