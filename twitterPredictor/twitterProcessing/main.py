@@ -3,7 +3,7 @@ from textblob import Word
 
 
 
-numberCandidates = 3
+numberCandidates = 5
 
 
 
@@ -214,6 +214,8 @@ def tp_execute(tweets):
     tweetsLematises, tweetsMotsUniques = [], []
     tweetsPositifs, tweetsNeutres, tweetsNegatifs = [], [], []
 
+    resultat = []
+
     for c in range(1, numberCandidates + 1): # On calcule l'ensemble des valeurs associées à l'ensemble des tweets liés à chque candidat
         candidats.append([t for t in tweets if t["candidat"] == c])
         avgHashtag.append(avg_hashtag(candidats[-1]))
@@ -241,5 +243,6 @@ def tp_execute(tweets):
         tweets_neg = len(tweetsNegatifs[-1]) * 100 / len(candidats[-1])
         tweets_neu = len(tweetsNeutres[-1]) * 100 / len(candidats[-1])
 
-    return [{"tweets_pos" : tweets_pos, "tweets_neg" : tweets_neg, "tweets_neu" : tweets_neu, "avg_hashtag" : avgHashtag, "max_hashtag" : maxHashtag, "min_hashtag" : minHashtag, "min_len_tweets" : minLenTweets, "max_len_tweets" : maxLenTweets,"avg_len_tweets" : avgLenTweets, "min_fav" : minFav, "max_fav" : maxFav, "avg_fav" : avgFav, "min_RT" : minRT, "max_RT" : maxRT, "avg_RT" : avgRT}, tweetsLematises, tweetsMotsUniques, tweetsPositifs, tweetsNeutres, tweetsNegatifs]
+        resultat.append({"tweets_pos" : tweets_pos, "tweets_neg" : tweets_neg, "tweets_neu" : tweets_neu, "avg_hashtag" : avgHashtag, "max_hashtag" : maxHashtag, "min_hashtag" : minHashtag, "min_len_tweets" : minLenTweets, "max_len_tweets" : maxLenTweets,"avg_len_tweets" : avgLenTweets, "min_fav" : minFav, "max_fav" : maxFav, "avg_fav" : avgFav, "min_RT" : minRT, "max_RT" : maxRT, "avg_RT" : avgRT, "tweetsLematises" : tweetsLematises, "tweetsMotsUniques" : tweetsMotsUniques, "tweetsPositifs" : tweetsPositifs, "tweetsNeutres" : tweetsNeutres, "tweetsNegatifs" : tweetsNegatifs})
 
+    return resultat
