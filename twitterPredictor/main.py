@@ -1,13 +1,15 @@
 # Twitter Predictor
+# coding: utf-8
 
 # Code principal
 
-import twitterCollect as tc
-import twitterStorage as ts
-import twitterDisplay as td
-import twitterProcessing as tp
+from twitterCollect.main import *
+from twitterStorage.main import *
+from twitterDisplay.main import *
+from twitterProcessing.main import *
 
-tweets = tc.execute() # Récupération d'une liste de tweets représentés chacun par un dictionnaire
-ts.execute(tweets) # stockage des tweets pour une utilisation ultérieure
-analysis = tp.execute(tweets) # renvoie un dictionnaire composé des analyses effectuées sur l'ensemble des tweets
-td.execute(analysis, tweets) # affiche l'ensemble des résultats
+tweets = tc_execute() # Récupération d'une liste de tweets représentés chacun par un dictionnaire
+ts_execute(tweets) # stockage des tweets pour une utilisation ultérieure
+analysis = tp_execute(tweets) # renvoie un dictionnaire composé des analyses effectuées sur l'ensemble des tweets
+
+td_execute(tweets, analysis) # affiche l'ensemble des résultats
