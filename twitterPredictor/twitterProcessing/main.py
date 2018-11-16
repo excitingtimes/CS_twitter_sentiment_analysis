@@ -186,4 +186,44 @@ def is_a_neg_tweet(tweet):
     polarity=tweet.sentiment.polarity 
     if polarity < -0,3:
         return True
-    return False         
+    return False
+
+#list_tweets est la liste des tweets pour un candidat donné
+    
+def list_pos_tweets(list_tweets):
+    """renvoie la liste des tweets positifs"""
+    list_pos_tweet=[]
+    for tweet in list_tweets:
+        if is_a_pos_tweet(tweet):
+            list_pos_tweet.append(tweet)
+    return list_pos_tweet
+            
+            
+def list_neg_tweets(list_tweets):
+    """renvoie la liste des tweets negatifs"""
+    list_neg_tweet=[]
+    for tweet in list_tweets:
+        if is_a_neg_tweet(tweet):
+            list_neg_tweet.append(tweet)
+    return list_neg_tweet
+            
+            
+def list_neutral_tweets(list_tweets):
+    """renvoie la liste des tweets neutres"""
+    list_neutral_tweet=[]
+    for tweet in list_tweets:
+        if is_a_neutral_tweet(tweet):
+            list_neutral_tweet.append(tweet)
+    return list_neutral_tweet
+    
+list_pos_tweet=list_pos_tweets(list_tweets)
+    
+list_neg_tweet=list_neg_tweets(list_tweets)
+
+list_neutral_tweet=list_neutral_tweets(list_tweets)
+
+print("Percentage of positive tweets: {}%".format(len(list_pos_tweets)*100/len(list_tweets)))
+print("Percentage of neutral tweets: {}%".format(len(list_neutral_tweets)*100/len(list_tweets)))
+print("Percentage de negative tweets: {}%".format(len(lits_neg_tweets)*100/len(list_tweets)))
+
+         
