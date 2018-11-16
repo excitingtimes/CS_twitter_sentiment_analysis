@@ -143,18 +143,20 @@ tweets = TextBlob(tweet)
 def tweets_lematises(tweets):
     """renvoie la liste des mots lémmatisés pour l'ensemble des tweets"""
     mots_lematises=[]
+    tweets=tweets.words
     for words in tweets:
         w=word(words)
         lemma=w.lemmatize()
-        mots_lematises;append(lemma)
-    return(mots_lematises
+        mots_lematises.append(lemma)
+    return(mots_lematises)
     
 def tweets_mots_uniques(tweets):
     """renvoie la liste des mots uniques pour l'ensemble des tweets"""
     mots_unique=[]
+    tweets=tweets.words
     for words in tweets:
-        if tweet.word_counts[words]==1:
-            mots_unique.append(words)
+        if tweets.word_counts[words]==1:
+             mots_unique.append(words)
     return(mots_unique)
     
         
