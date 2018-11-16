@@ -245,3 +245,93 @@ def tp_execute(tweets):
 
 
 
+<<<<<<< HEAD
+=======
+def tweets_lematises(tweets):
+    """renvoie la liste des mots lémmatisés pour l'ensemble des tweets"""
+    mots_lematises=[]
+    tweets=tweets.words
+    for words in tweets:
+        w=word(words)
+        lemma=w.lemmatize()
+        mots_lematises.append(lemma)
+    return(mots_lematises)
+    
+def tweets_mots_uniques(tweets):
+    """renvoie la liste des mots uniques pour l'ensemble des tweets"""
+    mots_unique=[]
+    tweets=tweets.words
+    for words in tweets:
+        if tweets.word_counts[words]==1:
+             mots_unique.append(words)
+    return(mots_unique)
+    
+
+
+#ici tweet est un tweet en chaine de caractère 
+
+
+def is_a_neutral_tweet(tweet):
+    """Cette fonction booléenne vérifie qu'un tweet est objectif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity>=-0,3 and polarity<=0,3
+        return True
+    return False 
+    
+def is_a_pos_tweet(tweet):
+    """cette fonction booléenne vérifie qu'un tweet est positif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity > 0,3:
+        return True 
+    return False 
+    
+def is_a_neg_tweet(tweet):
+    """cette fonction booléenne vérifie qu'un tweet est négatif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity < -0,3:
+        return True
+    return False
+
+#list_tweets est la liste des tweets pour un candidat donné
+    
+def list_pos_tweets(list_tweets):
+    """renvoie la liste des tweets positifs"""
+    list_pos_tweet=[]
+    for tweet in list_tweets:
+        if is_a_pos_tweet(tweet):
+            list_pos_tweet.append(tweet)
+    return list_pos_tweet
+            
+            
+def list_neg_tweets(list_tweets):
+    """renvoie la liste des tweets negatifs"""
+    list_neg_tweet=[]
+    for tweet in list_tweets:
+        if is_a_neg_tweet(tweet):
+            list_neg_tweet.append(tweet)
+    return list_neg_tweet
+            
+            
+def list_neutral_tweets(list_tweets):
+    """renvoie la liste des tweets neutres"""
+    list_neutral_tweet=[]
+    for tweet in list_tweets:
+        if is_a_neutral_tweet(tweet):
+            list_neutral_tweet.append(tweet)
+    return list_neutral_tweet
+    
+list_pos_tweet=list_pos_tweets(list_tweets)
+    
+list_neg_tweet=list_neg_tweets(list_tweets)
+
+list_neutral_tweet=list_neutral_tweets(list_tweets)
+
+print("Percentage of positive tweets: {}%".format(len(list_pos_tweets)*100/len(list_tweets)))
+print("Percentage of neutral tweets: {}%".format(len(list_neutral_tweets)*100/len(list_tweets)))
+print("Percentage de negative tweets: {}%".format(len(lits_neg_tweets)*100/len(list_tweets)))
+
+         
+>>>>>>> 63c06d9de5b806683c3932c3f9839d50931c1f63
