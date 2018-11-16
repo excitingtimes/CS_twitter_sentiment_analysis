@@ -226,4 +226,5 @@ print("Percentage of positive tweets: {}%".format(len(list_pos_tweets)*100/len(l
 print("Percentage of neutral tweets: {}%".format(len(list_neutral_tweets)*100/len(list_tweets)))
 print("Percentage de negative tweets: {}%".format(len(lits_neg_tweets)*100/len(list_tweets)))
 
+:wq
          
