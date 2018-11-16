@@ -159,4 +159,31 @@ def tweets_mots_uniques(tweets):
              mots_unique.append(words)
     return(mots_unique)
     
-        
+
+
+#ici tweet est un tweet en chaine de caractère 
+
+
+def is_a_neutral_tweet(tweet):
+    """Cette fonction booléenne vérifie qu'un tweet est objectif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity>=-0,3 and polarity<=0,3
+        return True
+    return False 
+    
+def is_a_pos_tweet(tweet):
+    """cette fonction booléenne vérifie qu'un tweet est positif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity > 0,3:
+        return True 
+    return False 
+    
+def is_a_neg_tweet(tweet):
+    """cette fonction booléenne vérifie qu'un tweet est négatif"""
+    tweet=TextBlob(tweet)
+    polarity=tweet.sentiment.polarity 
+    if polarity < -0,3:
+        return True
+    return False         
