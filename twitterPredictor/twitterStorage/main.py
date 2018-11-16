@@ -18,9 +18,8 @@ def unstore_tweets(filename): # Fonction permettant de récupérer les tweets pr
 	return tweets
 
 
-
-def tableau_donnees(tweet_status): # Fonction auxiliaire
-	tweet_json=json.dump(tweet_status[0]) #transformation d'un status en json
+def tableau_donnees(tweet_status):
+	tweet_json=json.dumps(tweet_status[0])		#transformation d'un status en json
 
 
 

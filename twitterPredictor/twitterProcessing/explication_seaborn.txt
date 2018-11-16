@@ -1,0 +1,23 @@
+
+faire un graphe avec seaborn (importé as sns):
+
+### sns.swarmplot(x="legend x",y="legend y",data=name_dataframe)
+
+attention!! la commande est regplot et non relplot comme indiqué dans des tutos en ligne
+(version? windows?)
+
+"legend x" est le nom de la colonne du dataframe!! on ne peut pas mettre la légende que l'on veut. Cela permet de sélectionner les colonnes de données que l'on veut afficher en x et en y à partir d'un dataframe à plus de deux colonnes.
+
+### commande hue: permet de rajouter une donnée au graphe, donnée correspondant à une troisième colonne du dataframe. Par exemple:
+
+ sns.swarmplot(x="legend x",y="legend y",hue="colonne3",data=name_dataframe)
+
+ va ajouter au graphe un système de visualisation où tous les éléments pour lesquels la valeur correspondant à la colonne3 est identique vont apparaître de la même couleur (ex: si oui ou non comme valeurs possibles, tous les points pour lesquels colonne3 vaut oui en orange et les autres en bleu)
+
+idem avec la commande style, cette fois c'est le style de point qui change. On peut utiliser simultanément style et hue pour accentuer le contraste, ou sur deux colonnes différentes pour visualiser plus de données.
+
+###COMMANDS CHANGES (tuto seaborn/pycharm commands)
+
+relplot: swarmplot?
+palette: pour la couleur utiliser "color: " avec une couleur matplotlib (importer matplotlib.colors), pour le contraste utiliser "alpha:float" avec float=0.0 pour transparent et 1.0 pour opaque
+
